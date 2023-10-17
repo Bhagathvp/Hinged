@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://43.204.98.182",
+  "proxy": "https://hinged-server.vercel.app",
   "private": true,
   "dependencies": {
     "@material-tailwind/react": "^2.1.2",
