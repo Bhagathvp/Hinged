@@ -1,9 +1,10 @@
-import axios from 'axios';
+import axios from './Axios';
 
 const instance = axios.create({
   headers: {
   'Content-Type': 'application/json'
 }});
+
 let token;
 if(JSON.parse(localStorage.getItem('vendor'))){
   token = JSON.parse(localStorage.getItem('vendor')).token

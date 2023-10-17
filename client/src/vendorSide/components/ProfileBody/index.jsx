@@ -60,11 +60,14 @@ const ProfileBody = () => {
     setIsPopUpVisible(!isPopUpVisible);
   };
   
+  let servicesArray;
+  let photographerArray;
+
+useEffect(()=>{
+  servicesArray = services?services.services:[];
+  photographerArray = photographer?photographer.photographers:[];
+},[services,photographer])
   
-
-  const servicesArray = services?services.services:[];
-  const photographerArray = photographer?photographer.photographers:[];
-
 
   // Function to show the message
   const showMessage = (message) => {
@@ -99,9 +102,11 @@ const ProfileBody = () => {
         [e.target.name] : e.target.value
       }))
     }
+    servicesArray = services?services.services:[];
+    photographerArray = photographer?photographer.photographers:[];
 
   const [serviceForm, setServiceForm] =useState({
-    category: servicesArray[0]?.category,
+    category: servicesArray?servicesArray[0]?.category:'Photographer',
     brand: '',
     contact: '',
     number: '',
@@ -169,11 +174,12 @@ const [validateMessage,setValidateMessage] = useState('')
     formData.append('price', price);
     formData.append('baseCity', baseCity);
     // Display the values
-    // for (const value of formData.values()) {
-    //   console.log(value);
-    // }
+    for (const value of formData.values()) {
+      console.log(value);
+    }
 
-    if(category==='Photographer'){
+    if(category=='Photographer'){
+
       dispatch(addPhotographer(formData))
     }else if(category==='Venues'){
       // console.log('venues');
@@ -885,7 +891,7 @@ const handlePayment = async (id) => {
                                         required
                                         className='w-2/3 p-1 m-1 text-sm font-mono rounded border-2 border-slate-200 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1'>
                                      {
-                                    servicesArray.map((service,index)=>
+                                    servicesArray?.map((service,index)=>
                                              <option key={index}  
                                              value={service.category}>{service.category}</option> 
                                         )
@@ -995,7 +1001,7 @@ const handlePayment = async (id) => {
               </div>
               <div className='w-full h-full flex overflow-x-auto flex-wrap '>
                 {
-                  photographerArray.map((photographer,index)=>
+                  photographerArray?.map((photographer,index)=>
                     <div key={index} className='min-w-1/3 h-full m-2'><EcommerceCard photographer={photographer}/></div>
                   )
                 }
