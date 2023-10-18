@@ -1,9 +1,4 @@
-import axios from './Axios';
-
-const instance = axios.create({
-  headers: {
-  'Content-Type': 'application/json',
-}});
+import instance from './Axios';
 
 const API_URL = '/vendor/'
 
