@@ -319,7 +319,7 @@ const ProfileBody = () => {
         setMessages(res.data);
       })
       .catch((err) => {
-        window.location.reload()
+        // window.location.reload()
         if(err.response.status===403 && err.response.data.message.message==='jwt expired'){
           	dispatch(logout())
         }
