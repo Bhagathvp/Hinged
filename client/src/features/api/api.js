@@ -25,7 +25,6 @@ let headers;
       }
     }
   }
-
  
 
 export const PhotoProfile = (data) => {

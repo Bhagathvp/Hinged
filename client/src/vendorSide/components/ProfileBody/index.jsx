@@ -120,7 +120,7 @@ useEffect(()=>{
     if(vendor){
       dispatch(getPhotographers({id:vendor._id})).then((res)=>{
         if(!res.payload){
-          window.location.reload();
+          // window.location.reload();
         }
       })
       dispatch(getServices({id:vendor._id})).then((res)=>{
