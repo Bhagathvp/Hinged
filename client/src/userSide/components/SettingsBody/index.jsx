@@ -31,12 +31,12 @@ const SettingsBody = () => {
           setSave(true)
     }
 
-    const handleFileUpload = (e) => {
+    const handleFileUpload = async(e) => {
         const formData = new FormData()
         formData.append("id",user._id);
         formData.append("image",e.target.files[0]);
 
-        editProPicApi(formData).then(res=>{
+        await editProPicApi(formData).then(res=>{
             toast.success("Profile Pic updated")
             dispatch(setUser(res.data))
         }).catch(err=>{
