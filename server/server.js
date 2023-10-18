@@ -15,7 +15,7 @@ const photographerRoute = require("./routes/photographerRoute");
 const chatRoute = require('./routes/chatRouter')
 
 app.use(cors({
-    origin:["https://hinged.live", "http://localhost:3000","https://hinged.vercel.app"],
+    origin:"https://hinged.vercel.app",
     
 }))
 
