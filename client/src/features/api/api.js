@@ -97,7 +97,7 @@ export const userBookingsApi = (data) => {
 
 export const bookingDetailsApi = (data) =>{
   const token = JSON.parse(localStorage.getItem('user'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'Auth': token };
   return instance.get('/photographer/bookedPhotographers',{
     params: data,
     headers: headers,
