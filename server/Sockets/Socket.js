@@ -8,7 +8,7 @@ const { isUserMatched } =require ("../interactors/MatchesInteractor.js")
 
 const io = new Server({
   cors: {
-    origin: ["https://hinged.live", "http://localhost:3000"] ,
+    origin: ["https://hinged.live", "http://localhost:3000","https://hinged.vercel.app"] ,
   },
   pingTimeout: 60000,
 });
