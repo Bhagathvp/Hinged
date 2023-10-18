@@ -36,7 +36,10 @@ export const ReadMsgsApi = (data) => instance.post("/chat/markRead", data, heade
 
 export const addNewMSgApi = (data) => instance.post("/chat/addmsg", data, headers);
 
-export const getAllmsgsApi = (data) => instance.post("/chat/getmsg", data, headers);
+export const getAllmsgsApi = (data) => {
+  console.log(headers)
+  return instance.post("/chat/getmsg", data, headers)
+};
 
 export const getLastMsgsApi = (data) => instance.post("/chat/lastmsg", data, headers);
 
