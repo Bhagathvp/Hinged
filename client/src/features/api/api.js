@@ -18,9 +18,10 @@ let headers;
       }
     }
   }else if(vendor){
+    const token = JSON.parse(localStorage.getItem('vendor'))?.token
     headers = {
       headers:{
-        'auth' : JSON.parse(localStorage.getItem('vendor'))?.token,
+        'auth' : token,
       }
     }
   }
@@ -36,15 +37,7 @@ export const ReadMsgsApi = (data) => instance.post("/chat/markRead", data, heade
 
 export const addNewMSgApi = (data) => instance.post("/chat/addmsg", data, headers);
 
-export const getAllmsgsApi = (data) => {
- 
-  const token = JSON.parse(localStorage.getItem('user'))?.token
-   console.log(token)
-   const headers = { 'auth': token };
-  return instance.post("/chat/getmsg", data, {
-    headers : headers
-  })
-};
+export const getAllmsgsApi = (data) => instance.post("/chat/getmsg", data, headers);
 
 export const getLastMsgsApi = (data) => instance.post("/chat/lastmsg", data, headers);
 
