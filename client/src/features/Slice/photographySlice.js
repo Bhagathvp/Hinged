@@ -15,7 +15,7 @@ const headers = {
 
   const formDataHeaders = {
     headers: {
-        'auth' : JSON.parse(localStorage.getItem('vendor'))?.token,
+        'auth' : token,
         "Content-Type": "multipart/form-data",
     },
   };

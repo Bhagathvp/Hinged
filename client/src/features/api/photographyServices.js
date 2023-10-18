@@ -7,7 +7,7 @@ if(JSON.parse(localStorage.getItem('vendor'))){
 
 const headers = {
     headers:{
-      'auth_token' : token,
+      'auth' : token,
     }
   }
 
