@@ -12,13 +12,6 @@ const asyncHandler = require('express-async-handler')
 const getAllPhotographers = asyncHandler(async(req,res)=>{
     const AlPhotographers = await Photographer.find()
     if(AlPhotographers){
-        // AllPhotographers?.sort((a, b) => {
-        //     // Sort in descending order of 'subscription'
-        //     if (a?.subscription === b?.subscription) {
-        //         return 0;
-        //     }
-        //     return a?.subscription ? -1 : 1; // `true` comes before `false`
-        //     })
 
         const sub = AlPhotographers.filter((photographer)=>photographer.subscription===true)
         const noSub = AlPhotographers.filter((photographer)=>photographer.subscription!==true)
