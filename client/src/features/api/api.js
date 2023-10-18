@@ -5,15 +5,16 @@ const instance = axios.create({
       'Content-Type': 'application/json',
     }
   });
-  
+
 let headers;
   const user= JSON.parse(localStorage.getItem('user'));
   const vendor= JSON.parse(localStorage.getItem('vendor'));
 
   if(user){
+    const token = JSON.parse(localStorage.getItem('user')).token
     headers = {
       headers:{
-        'auth_token' : JSON.parse(localStorage.getItem('user'))?.token,
+        'auth_token' : token,
       }
     }
   }else if(vendor){
