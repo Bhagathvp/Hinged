@@ -211,6 +211,7 @@ export const addSubscriptionApi = data =>{
 });
 }
 
+//subscription verification
 export const verifySubscriptionApi= data =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
   const headers = { 'auth': token };
