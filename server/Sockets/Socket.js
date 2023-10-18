@@ -16,8 +16,8 @@ const io = new Server({
 global.onlineUsers = new Map();
 
 
-
 io.on("connection", (Socket) => {
+  console.log("inside socketingggggg")
 
   global.chatSocket = Socket;
   
