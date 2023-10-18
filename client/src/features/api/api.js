@@ -37,8 +37,9 @@ export const ReadMsgsApi = (data) => instance.post("/chat/markRead", data, heade
 export const addNewMSgApi = (data) => instance.post("/chat/addmsg", data, headers);
 
 export const getAllmsgsApi = (data) => {
-  console.log(headers)
+ 
   const token = JSON.parse(localStorage.getItem('user'))?.token
+   console.log(token)
   return instance.post("/chat/getmsg", data, {
     headers:{
     'auth_token' : token,
