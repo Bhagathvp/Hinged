@@ -89,7 +89,7 @@ export const userBookingsApi = (data) => {
 
 export const bookingDetailsApi = (data) =>{
   const token = JSON.parse(localStorage.getItem('user'))?.token;
-  const headers = { 'Auth': token };
+  const headers = { 'auth': token };
   return instance.get('/photographer/bookedPhotographers',{
     params: data,
     headers: headers,
@@ -115,7 +115,7 @@ export const verifyOrderApi = (data)=>{
 
 export const vendorBookingsApi = (data) => {
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
   return instance.get('/vendor/vendorBookings', {
     params: data,
     headers: headers, // Pass headers inside the configuration object
@@ -124,7 +124,7 @@ export const vendorBookingsApi = (data) => {
 
 export const vendorBookingDetailsApi = (data) =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
   return instance.get('/photographer/bookedPhotographers',{
     params: data,
     headers: headers,
@@ -133,7 +133,7 @@ export const vendorBookingDetailsApi = (data) =>{
 
 export const getUserDetailsApi = (data) =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
   return instance.get('/vendor/getUserDetails',{
     params: data,
     headers: headers,
@@ -143,7 +143,7 @@ export const getUserDetailsApi = (data) =>{
 //admin bookings
 export const adminBookingsApi = (data) =>{
   const token = JSON.parse(localStorage.getItem('admin'))?.token;
-  const headers = {'auth_token': token};
+  const headers = {'auth': token};
   return instance.get('/admin/adminBookings',{
     headers: headers
   })
@@ -151,7 +151,7 @@ export const adminBookingsApi = (data) =>{
 
 export const issueRefundApi = data =>{
   const token = JSON.parse(localStorage.getItem('admin'))?.token;
-  const headers = {'auth_token': token};
+  const headers = {'auth': token};
   return instance.put('/admin/issueRefund',data,{
     headers: headers
   })
@@ -167,7 +167,7 @@ export const userRefundApi = data =>{
 
 export const vendorRefundApi = data =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
     return instance.put('/vendor/vendorRefund',data,{
     headers: headers,
   });
@@ -175,7 +175,7 @@ export const vendorRefundApi = data =>{
 
 export const addReviewApi = data =>{
   const token = JSON.parse(localStorage.getItem('user'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
     return instance.put('/photographer/addReview',data,{
     headers: headers,
   });
@@ -205,7 +205,7 @@ export const editProPicApi = data =>{
 //subscription
 export const addSubscriptionApi = data =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
   return instance.post('/vendor/addSubscription',data,{
   headers: headers,
 });
@@ -213,7 +213,7 @@ export const addSubscriptionApi = data =>{
 
 export const verifySubscriptionApi= data =>{
   const token = JSON.parse(localStorage.getItem('vendor'))?.token;
-  const headers = { 'auth_token': token };
+  const headers = { 'auth': token };
   return instance.post('/vendor/verifySubscription',data,{
   headers: headers,
 });
