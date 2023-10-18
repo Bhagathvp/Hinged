@@ -383,7 +383,7 @@ const editProPic = asyncHandler(async(req,res)=>{
       email: updateUser.email,
       url: updateUser.imageUrl,
       is_verified: updateUser.is_verified,
-      shortlist: user.shortlist,
+      shortlist: updateUser.shortlist,
       token: generateToken(updateUser._id),
     })
   }else{
