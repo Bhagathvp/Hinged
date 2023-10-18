@@ -4,7 +4,7 @@ const URL= process.env.REACT_APP_SERVER_URL;
 console.log(URL)
 
 const instance = axios.create({
-  baseURL:URL,
+  baseURL:"https//:hinged.live",
   headers: {
     'Content-Type': 'application/json',
   }
