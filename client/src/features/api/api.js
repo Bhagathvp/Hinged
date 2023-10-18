@@ -1,6 +1,11 @@
-import instance from './Axios';
+import axios from './Axios';
 
-
+const instance = axios.create({
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  
 let headers;
   const user= JSON.parse(localStorage.getItem('user'));
   const vendor= JSON.parse(localStorage.getItem('vendor'));
