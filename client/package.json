@@ -1,7 +1,6 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "https://localhost:4000",
   "private": true,
   "dependencies": {
     "@material-tailwind/react": "^2.1.2",
