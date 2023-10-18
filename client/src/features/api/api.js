@@ -11,16 +11,16 @@ let headers;
   const vendor= JSON.parse(localStorage.getItem('vendor'));
 
   if(user){
-    const token = JSON.parse(localStorage.getItem('user')).token
+    const token = JSON.parse(localStorage.getItem('user'))?.token
     headers = {
       headers:{
-        'auth_token' : token,
+        'auth' : token,
       }
     }
   }else if(vendor){
     headers = {
       headers:{
-        'auth_token' : JSON.parse(localStorage.getItem('vendor'))?.token, 
+        'auth' : JSON.parse(localStorage.getItem('vendor'))?.token,
       }
     }
   }
@@ -40,7 +40,7 @@ export const getAllmsgsApi = (data) => {
  
   const token = JSON.parse(localStorage.getItem('user'))?.token
    console.log(token)
-   const headers = { 'Auth_token': `${token}` };
+   const headers = { 'auth': `${token}` };
   return instance.post("/chat/getmsg", data, {
     headers:headers
   })
