@@ -8,7 +8,7 @@ let services= JSON.parse(localStorage.getItem('services'))
 
 const headers = {
     headers:{
-      'auth_token' : JSON.parse(localStorage.getItem('vendor'))?.token,
+      'auth' : JSON.parse(localStorage.getItem('vendor'))?.token,
     }
   }
 

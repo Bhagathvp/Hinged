@@ -40,9 +40,9 @@ export const getAllmsgsApi = (data) => {
  
   const token = JSON.parse(localStorage.getItem('user'))?.token
    console.log(token)
-   const headers = { 'auth': `${token}` };
+   const headers = { 'auth': token };
   return instance.post("/chat/getmsg", data, {
-    headers:headers
+    headers : headers
   })
 };
 

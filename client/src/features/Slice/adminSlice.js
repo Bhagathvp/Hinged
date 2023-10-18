@@ -3,9 +3,10 @@ import adminService from '../api/adminServices'
 
 //get user from localstorage
 let admin=  JSON.parse(localStorage.getItem('admin'))
+
 const headers = {
   headers:{
-    'auth_token' : JSON.parse(localStorage.getItem('admin'))?.token,
+    'auth' : JSON.parse(localStorage.getItem('admin'))?.token,
   }
 }
 

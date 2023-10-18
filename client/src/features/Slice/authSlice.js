@@ -6,7 +6,7 @@ const user= JSON.parse(localStorage.getItem('user'));
 
 const headers = {
   headers:{
-    'auth_token' : JSON.parse(localStorage.getItem('user'))?.token,
+    'auth' : JSON.parse(localStorage.getItem('user'))?.token,
   }
 }
 

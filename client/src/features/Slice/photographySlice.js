@@ -9,14 +9,14 @@ let token = JSON.parse(localStorage.getItem('vendor'))?.token
 
 const headers = {
     headers:{
-      'auth_token' : token,
+      'auth' : token,
     }
   }
 
   const formDataHeaders = {
     headers: {
-        'auth_token' : JSON.parse(localStorage.getItem('vendor'))?.token,
-      "Content-Type": "multipart/form-data",
+        'auth' : JSON.parse(localStorage.getItem('vendor'))?.token,
+        "Content-Type": "multipart/form-data",
     },
   };
 
