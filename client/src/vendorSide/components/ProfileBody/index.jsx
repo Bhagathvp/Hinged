@@ -177,9 +177,9 @@ const [validateMessage,setValidateMessage] = useState('')
     formData.append('price', price);
     formData.append('baseCity', baseCity);
     // Display the values
-    for (const value of formData.values()) {
-      console.log(value);
-    }
+    // for (const value of formData.values()) {
+    //   console.log(value);
+    // }
 
     if(category=='Photographer'){
 
