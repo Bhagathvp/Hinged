@@ -141,7 +141,10 @@ function EcommerceCard({photographer,setShortlists}) {
         console.log(error);
         if(error.response.status===403 && error.response.data.message.message==='jwt expired'){
           dispatch(logout())
-      }
+        }
+        if(error.response.status===400){
+          toast.error(error.response.data.message)
+        }
       }
     };
     
