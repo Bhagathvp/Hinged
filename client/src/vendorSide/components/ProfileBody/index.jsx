@@ -106,7 +106,7 @@ useEffect(()=>{
     photographerArray = photographer?photographer.photographers:[];
 
   const [serviceForm, setServiceForm] =useState({
-    category: servicesArray?servicesArray[0].category:'Photographer',
+    category: servicesArray?services.services[0].category:'Photographer',
     brand: '',
     contact: '',
     number: '',
