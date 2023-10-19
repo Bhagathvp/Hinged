@@ -249,6 +249,7 @@ const makeOrder =async(req,res)=>{
 		});
 
     const userDetails = await User.findOne({_id:userId});
+    console.log(userDetails)
     if(userDetails.is_verified===0){
       console.log("user blocked")
       return res.status(400).json("user blocked by admin")
