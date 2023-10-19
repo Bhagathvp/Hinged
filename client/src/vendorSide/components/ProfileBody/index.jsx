@@ -59,15 +59,6 @@ const ProfileBody = () => {
   const togglePopUp = () => {
     setIsPopUpVisible(!isPopUpVisible);
   };
-  
-  let servicesArray;
-  let photographerArray;
-
-useEffect(()=>{
-  servicesArray = services?services.services:[];
-  photographerArray = photographer?photographer.photographers:[];
-},[services,photographer])
-  
 
   // Function to show the message
   const showMessage = (message) => {
@@ -102,11 +93,22 @@ useEffect(()=>{
         [e.target.name] : e.target.value
       }))
     }
-    servicesArray = services?services.services:[];
-    photographerArray = photographer?photographer.photographers:[];
+
+  let  servicesArray = services?services.services:[];
+  let   photographerArray = photographer?photographer.photographers:[];
+
+    const [category,setCategory] = useState(servicesArray[0]?.category)
+
+    useEffect(()=>{
+      servicesArray = services?services.services:[];
+    },[services])
+    
+    useEffect(()=>{
+      setCategory(servicesArray[0]?.category)
+      // console.log(category)
+    },[servicesArray])
 
   const [serviceForm, setServiceForm] =useState({
-    category: servicesArray?services.services[0].category:'Photographer',
     brand: '',
     contact: '',
     number: '',
@@ -114,7 +116,7 @@ useEffect(()=>{
     baseCity: '',
   })
 
-  const {category,brand,contact,number,price,baseCity} = serviceForm
+  const {brand,contact,number,price,baseCity} = serviceForm
 
   useEffect(()=>{
     if(vendor){
@@ -888,7 +890,7 @@ const handlePayment = async (id) => {
                                   <label htmlFor="category" className='w-1/3'>Category*</label>
                                   <select id='category'
                                           name='category'
-                                        onChange={Change}
+                                        onChange={(e)=>setCategory(e.target.value)}
                                         required
                                         className='w-2/3 p-1 m-1 text-sm font-mono rounded border-2 border-slate-200 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1'>
                                      {
