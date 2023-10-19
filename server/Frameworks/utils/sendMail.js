@@ -19,10 +19,14 @@ const sendMail =async (email,Otp)=>{
     });
 
     const details ={
-          from: '"HINGED " hinged.wedding@gmail.com', // sender address
+          from: '"HINGED" hinged.wedding@gmail.com', // sender address
           to: email, // list of receivers
           subject: "OTP Verification", // Subject line
-          text: `Your Otp verification code is ${Otp}`, // plain text body
+          html: `<p>Hello,</p>
+                 <p>Thank you for using our service. Your OTP verification code is <b>${Otp}</b>.</p>
+                 <p>Please enter this OTP to proceed. If you did not request this OTP, please ignore this email.</p>
+                 <p>Best Regards,</p>
+                 <p>Your HINGED Team</p>`, // HTML body
         }
     
         // send mail with defined transport object
