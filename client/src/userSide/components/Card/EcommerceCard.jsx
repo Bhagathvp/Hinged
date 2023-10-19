@@ -133,8 +133,8 @@ function EcommerceCard({photographer,setShortlists}) {
           setModalOpen(false);
           const { data } = await makeOrderApi({id,userId:user._id,startDate}).catch(err=>{
             console.log(err);
-            if(response.status===400){
-              toast.error(response.data)
+            if(err.response.status===400){
+              toast.error(err.response.data)
             }
             return
           })
