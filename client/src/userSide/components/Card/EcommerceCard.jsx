@@ -139,13 +139,13 @@ function EcommerceCard({photographer,setShortlists}) {
           toast.warning("Select a proper date")
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         if(error.response.status===403 && error.response.data.message.message==='jwt expired'){
           dispatch(logout())
         }
         if(err.response.status===400){
           console.log(err.response.data)
-          // toast.error(err.response.data)
+          toast.error(err.response.data)
         }
       }
     };
