@@ -65,7 +65,7 @@ const ProjectRoutes = () => {
                   <Route path="/" element={<Home/> } />  
                   <Route path='/photographers' element={<Photographers/>}/>
                   <Route path='/photographers/profile' element={<PhotographerProfile/>}/>
-                  <Route path='/venues' element={<Venues/>}/>
+                  {/* <Route path='/venues' element={<Venues/>}/> */}
 
 
                 <Route element={<UserPublicRoute/>}>
