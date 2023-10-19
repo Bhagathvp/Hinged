@@ -94,8 +94,8 @@ const ProfileBody = () => {
       }))
     }
 
-  let  servicesArray = services?services.services:[];
-  let   photographerArray = photographer?photographer.photographers:[];
+  let servicesArray = services?services.services:[];
+  let photographerArray = photographer?photographer.photographers:[];
 
     const [category,setCategory] = useState(servicesArray[0]?.category)
 
@@ -185,6 +185,7 @@ const [validateMessage,setValidateMessage] = useState('')
 
       dispatch(addPhotographer(formData))
     }else if(category==='Venues'){
+      setCategory(servicesArray[0]?.category)
       // console.log('venues');
     }
   }
