@@ -139,8 +139,10 @@ function EcommerceCard({photographer,setShortlists}) {
             }
             return
           })
-        console.log(data);
-        initPayment(data.data,data.name,data.image);
+          if(data){
+             console.log(data);
+              initPayment(data.data,data.name,data.image);
+          }
         }else{
           toast.warning("Select a proper date")
         }
