@@ -133,7 +133,7 @@ function EcommerceCard({photographer,setShortlists}) {
           setModalOpen(false);
           const { data } = await makeOrderApi({id,userId:user._id,startDate})
           
-        console.log(data);
+        // console.log(data);
         initPayment(data.data,data.name,data.image);
         }else{
           toast.warning("Select a proper date")
