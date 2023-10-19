@@ -133,13 +133,13 @@ function EcommerceCard({photographer,setShortlists}) {
           setModalOpen(false);
           const { data } = await makeOrderApi({id,userId:user._id,startDate})
           
-        // console.log(data);
+        console.log(data);
         initPayment(data.data,data.name,data.image);
         }else{
           toast.warning("Select a proper date")
         }
       } catch (error) {
-        // console.log(error);
+        console.log(error);
         if(error.response.status===403 && error.response.data.message.message==='jwt expired'){
           dispatch(logout())
         }
