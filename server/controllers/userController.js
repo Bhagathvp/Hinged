@@ -248,6 +248,11 @@ const makeOrder =async(req,res)=>{
 			key_secret: process.env.KEY_SECRET,
 		});
 
+    const userDetails = await User.findOne({_id:userId});
+    if(userDetails.is_verified===0){
+      return res.status(400).json("user blocked by admin")
+    }
+
     const photographer = await Photographers.findOne({_id:id});
 
     let amount = photographer?.amount;

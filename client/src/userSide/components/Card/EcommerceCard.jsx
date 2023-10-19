@@ -131,7 +131,10 @@ function EcommerceCard({photographer,setShortlists}) {
       try {
         if(startDate>Date.now()){
           setModalOpen(false);
-          const { data } = await makeOrderApi({id,userId:user._id,startDate})
+          const { data } = await makeOrderApi({id,userId:user._id,startDate}).catch(err=>{
+            console.log(err);
+            return
+          })
         console.log(data);
         initPayment(data.data,data.name,data.image);
         }else{
