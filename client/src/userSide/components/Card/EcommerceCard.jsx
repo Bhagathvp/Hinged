@@ -132,7 +132,6 @@ function EcommerceCard({photographer,setShortlists}) {
         if(startDate>Date.now()){
           setModalOpen(false);
           const { data } = await makeOrderApi({id,userId:user._id,startDate})
-          
         console.log(data);
         initPayment(data.data,data.name,data.image);
         }else{
@@ -142,11 +141,7 @@ function EcommerceCard({photographer,setShortlists}) {
         console.log(error);
         if(error.response.status===403 && error.response.data.message.message==='jwt expired'){
           dispatch(logout())
-        }
-        if(err.response.status===400){
-          console.log(err.response.data)
-          toast.error(err.response.data)
-        }
+      }
       }
     };
     
