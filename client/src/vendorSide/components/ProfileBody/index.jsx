@@ -336,9 +336,9 @@ const [validateMessage,setValidateMessage] = useState('')
   const [modalOpen, setModalOpen] = useState(false);
 
   
-  useEffect(() => {
-    console.log(chattedUser, "<=userStateChanged");
-  }, [chattedUser]);
+  // useEffect(() => {
+  //   console.log(chattedUser, "<=userStateChanged");
+  // }, [chattedUser]);
 
   useEffect(() => {
     let conversationIds = [];
