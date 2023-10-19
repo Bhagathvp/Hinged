@@ -201,7 +201,7 @@ const [validateMessage,setValidateMessage] = useState('')
       youtube,
       address
     }
-    dispatch(vendorProfile(data))
+    dispatch(vendorProfile(data)).then((res)=>toast.success('info saved'))
     
   }
 
