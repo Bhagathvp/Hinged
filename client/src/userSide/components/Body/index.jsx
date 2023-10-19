@@ -1,5 +1,6 @@
 import React, {useRef} from 'react'
 import WeddingCategories from '../WeddingCategories/WeddingCategories';
+import { useNavigate } from 'react-router-dom';
 
 const Body = () => {
   const backgroundImageUrl = 'url(banner/background.png)';
@@ -38,6 +39,8 @@ const Body = () => {
       behavior: 'smooth',
     });
   };
+
+  const navigate = useNavigate();
   
   return (
 
@@ -56,25 +59,25 @@ const Body = () => {
             {/* Clone the content for loop effect */}
           {[...Array(2)].map((_, index) => (
             <React.Fragment key={index}>
-              <div className='flex flex-col mr-3'>
+              <div className='flex flex-col mr-3 cursor-pointer' onClick={()=>navigate('/photographers')}>
                 <div className='w-48 h-60 overflow-hidden rounded-lg'>
                   <img className='rounded-lg w-full h-full object-cover transition-transform duration-500 hover:scale-125' src="https://image.wedmegood.com/resized/450X/uploads/member/138533/1611909257__JAN2609.jpg?crop=9,138,2031,1142" alt="popular searches" />
                 </div>
                 <p className='mt-2 text-gray-700'>Venues</p>
               </div>
-              <div className='flex flex-col mr-3'>
+              <div className='flex flex-col mr-3 cursor-pointer' onClick={()=>navigate('/photographers')}>
                 <div className='w-48 h-60 overflow-hidden rounded-lg'>
                   <img className='rounded-lg w-full h-full object-cover transition-transform duration-500 hover:scale-125' src="https://image.wedmegood.com/resized/300X/uploads/banner_image/2/mua.jpg" alt="popular searches" />
                 </div>
                 <p className='mt-2 text-gray-700'>Bridal MakeUp</p>
               </div>
-              <div className='flex flex-col mr-3'>
+              <div className='flex flex-col mr-3 cursor-pointer' onClick={()=>navigate('/photographers')}>
                 <div className='w-48 h-60 overflow-hidden rounded-lg'>
                   <img className='rounded-lg w-full h-full object-cover transition-transform duration-500 hover:scale-125' src="https://image.wedmegood.com/resized/300X/uploads/banner_image/3/photography.jpg" alt="popular searches" />
                 </div>
                 <p className='mt-2 text-gray-700'>Photographers</p>
               </div>
-              <div className='flex flex-col mr-3'>
+              <div className='flex flex-col mr-3 cursor-pointer' onClick={()=>navigate('/photographers')}>
                 <div className='w-48 h-60 overflow-hidden rounded-lg'>
                   <img className='rounded-lg w-full h-full object-cover transition-transform duration-500 hover:scale-125' src="https://image.wedmegood.com/resized/300X/uploads/banner_image/1/bridal-wear.jpg" alt="popular searches" />
                 </div>
