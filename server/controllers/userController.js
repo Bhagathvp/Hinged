@@ -242,11 +242,19 @@ const userBookings = asyncHandler(async(req,res)=>{
 const makeOrder =async(req,res)=>{
   try {
     const {id,userId,startDate} = req.body;
+
+    
+    const userDetails = await User.findOne({_id:userId});
+
+    if(userDetails.is_verified===0){
+      console.log("user blocked")
+      return res.status(400).json({message:"user blocked by admin"})
+    } 
     
 		const instance = new Razorpay({
 			key_id: process.env.KEY_ID,
 			key_secret: process.env.KEY_SECRET,
-		});
+		})
 
     const photographer = await Photographers.findOne({_id:id});
 
