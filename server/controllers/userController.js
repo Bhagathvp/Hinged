@@ -372,7 +372,7 @@ const editProPic = asyncHandler(async(req,res)=>{
   console.log(cloudImg)
   const updateUser = await User.findOneAndUpdate({_id:id},
     {$set:{
-      imageUrl: cloudImg?.url
+      imageUrl: cloudImg?.secure_url
     }},
     {new:true}
   )

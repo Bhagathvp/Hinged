@@ -204,7 +204,7 @@ const editPhotographer = asyncHandler(async(req,res)=>{
             mobile: number,
             amount: price,
           },$push:{
-            images: cloudImg?.url
+            images: cloudImg?.secure_url
           }
         },
         { new: true } 
