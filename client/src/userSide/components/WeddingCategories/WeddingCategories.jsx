@@ -7,7 +7,7 @@ const WeddingCategories = () => {
     <div className='relative container md:max-w-screen-md mx-auto '>
       <h1 className='mt-10 mb-5 text-2xl font-semibold'>Wedding Categories</h1>
 
-      <div onClick={()=>navigate('/photographers')}
+      <div onClick={()=>navigate('/vendors')}
       className='flex flex-col md:flex-row  '>
         <div className='mr-2 mb-2 w-full md:w-1/2 h-32 bg-blue-200 flex items-center justify-between cursor-pointer'>
             <div className='p-5 w-1/2'>
