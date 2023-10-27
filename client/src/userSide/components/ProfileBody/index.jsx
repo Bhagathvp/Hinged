@@ -107,7 +107,7 @@ const ProfileBody = () => {
     }catch (error) {
       console.log(error)
       if(!currentChat){
-        toast.warning('select an user to chat')
+        toast.warning('select a vendor to chat')
       }
     }
     
