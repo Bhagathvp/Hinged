@@ -54,7 +54,11 @@ const googleLogin = asyncHandler(async(req,res)=>{
     const user = await User.findOne({ email })
 
     if(user){
-      await User.findOneAndUpdate({email},{$set:{imageUrl:picture}});
+      const imagePresent = await User.findOne({email, imageUrl: {$exists: true}})
+      if(!imagePresent){
+        console.log('image not present')
+        await User.findOneAndUpdate({email},{$set:{imageUrl:picture}});
+      }
       if(user.is_verified && user.is_user===1){
 
           res.json({
