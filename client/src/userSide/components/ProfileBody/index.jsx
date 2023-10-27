@@ -17,6 +17,7 @@ import utc from "dayjs/plugin/utc";
 import {logout} from '../../../features/Slice/authSlice'
 import { socket } from "../../../Socket";
 import { ReadMsgsApi,getAllmsgsApi , ShowMatchesApi,getLastMsgsApi, userShortlistsApi, userBookingsApi } from "../../../features/api/api";
+import { toast } from 'react-toastify';
 
 // Extend Day.js with the necessary plugins
 dayjs.extend(relativeTime);
@@ -90,18 +91,26 @@ const ProfileBody = () => {
   };
 
   const handleSendMsg = async (msg) => {
-    const data = {
-      from: user?._id,
-      to: currentChat?._id,
-      message: msg,
-      messageType: "text",
-      conversationId: currentChat.conversationId,
-    };
-    socket.emit("send-msg", data);
+    try{
+      const data = {
+        from: user?._id,
+        to: currentChat?._id,
+        message: msg,
+        messageType: "text",
+        conversationId: currentChat.conversationId,
+      };
+      socket.emit("send-msg", data);
 
-    const msgs = [...messages];
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages(msgs);
+      const msgs = [...messages];
+      msgs.push({ fromSelf: true, message: msg });
+      setMessages(msgs);
+    }catch (error) {
+      console.log(error)
+      if(!currentChat){
+        toast.warning('select an user to chat')
+      }
+    }
+    
   };
 
   //container
