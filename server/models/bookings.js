@@ -43,7 +43,7 @@ const bookingSchema = new mongoose.Schema(
     },
     status:{
         type: String,
-        default:"paid"
+        default:"payment initiated"
     },
     completed: {
         type: Boolean,

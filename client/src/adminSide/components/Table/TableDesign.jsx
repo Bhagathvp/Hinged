@@ -250,6 +250,15 @@ const TableDesign = (prop) => {
             {bookingDetail?.status === 'refunded' && "REFUNDED"}
           </button>
         );
+      } else if (bookingDetail.status === 'payment initiated') {
+        action = (
+          <button
+            value={bookingDetail.id}
+            className='bg-sky-400 px-4 rounded text-white font-semibold border border-slate-950'
+          >
+            {bookingDetail?.status === 'payment initiated' && "PAYMENT INITIATED"}
+          </button>
+        );
       }
       return( 
         { 

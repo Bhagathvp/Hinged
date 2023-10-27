@@ -255,6 +255,9 @@ const login = asyncHandler(async (req, res) => {
     }
   })
 
+
+  //to get all bookings
+
   const adminBookings = async(req,res)=>{
     try {
       const bookings = await Bookings.find();

@@ -231,7 +231,7 @@ const removeShortlist = asyncHandler(async(req,res)=>{
 //get bookings
 const userBookings = asyncHandler(async(req,res)=>{
   const {id} = req.query
-  const bookings =await Bookings.find({userId:id});
+  const bookings =await Bookings.find({userId:id,completed: true});
   if(bookings.length!=0){
 
     res.status(200).json(bookings);
@@ -316,7 +316,8 @@ const verifyOrder = async(req,res)=>{
 			.digest("hex");
 
 		if (razorpay_signature === expectedSign) {
-      const bookingComplete = await Bookings.findOneAndUpdate({'paymentDetails.receipt':receipt},{$set:{completed: true}},{new:true});
+      const bookingComplete = 
+        await Bookings.findOneAndUpdate({'paymentDetails.receipt':receipt},{$set:{completed: true, status: 'paid'}},{new:true});
       if(bookingComplete){
         return res.status(200).json({ message: "Payment verified and completed successfully", id:bookingComplete.serviceId });
       }
