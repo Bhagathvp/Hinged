@@ -9,6 +9,8 @@ admin_route.use(jwtAuth)
 
 admin_route.post("/block", adminController.block)
 
+admin_route.post("/vendorBlock", adminController.vendorBlock)
+
 admin_route.post('/addServices',adminController.addService)
 
 admin_route.get('/adminBookings',adminController.adminBookings)

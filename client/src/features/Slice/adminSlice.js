@@ -53,6 +53,27 @@ export const adminLogin = createAsyncThunk('admin/login', async (adminData, thun
       return thunkAPI.rejectWithValue(message)
     }
   })
+
+//block vendor
+export const adminVendorBlock = createAsyncThunk('admin/vendorBlock', async (userData,thunkAPI) => {
+  try {
+    return await adminService.adminVendorBlock(userData,headers)
+  } catch (error) {
+    const message =
+      (error.response && 
+          error.response.data && 
+          error.response.data.message) ||
+      error.message ||
+      error.toString()
+      if(error.response.status===403){
+        if(error.response.data.message.message !== 'jwt must be provided'){
+          console.log('removing local');
+          await adminService.adminLogout()
+      }
+      }
+    return thunkAPI.rejectWithValue(message)
+  }
+})
   
 //add services
   export const addServices = createAsyncThunk('admin/addServices', async (Data, thunkAPI) => {
@@ -110,6 +131,20 @@ export const adminSlice = createSlice({
           state.adminState = action.payload
         })
         .addCase(adminBlock.rejected, (state, action) => {
+          state.isLoading = false
+          state.isError = true
+          state.message = action.payload
+          state.adminState = null
+        })
+        .addCase(adminVendorBlock.pending, (state) => {
+          state.isLoading = true
+        })
+        .addCase(adminVendorBlock.fulfilled, (state, action) => {
+          state.isLoading = false
+          state.isSuccess = true
+          state.adminState = action.payload
+        })
+        .addCase(adminVendorBlock.rejected, (state, action) => {
           state.isLoading = false
           state.isError = true
           state.message = action.payload

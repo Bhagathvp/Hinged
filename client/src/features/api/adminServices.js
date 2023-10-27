@@ -25,6 +25,18 @@ const adminLogin = async (adminData) => {
     return response.data
   }
 
+  //admin vendor block
+  const adminVendorBlock = async (userData,headers) =>{
+    const response = await instance.post(API_URL+'vendorBlock' ,userData, headers)
+
+    if (response.data) {
+      localStorage.setItem('admin', JSON.stringify(response.data))
+    }
+  
+    return response.data
+  }
+
+
 
   //add services
   const addServices = async (Data,headers) =>{
@@ -48,6 +60,7 @@ const adminLogin = async (adminData) => {
     adminLogout,
     adminBlock,
     addServices,
+    adminVendorBlock
   } 
   
   export default adminService;

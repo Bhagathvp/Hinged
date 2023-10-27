@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import { Table,Modal,Button } from 'antd';
 
 import {useSelector,useDispatch} from 'react-redux'
-import { adminBlock } from '../../../features/Slice/adminSlice'
+import { adminBlock, adminVendorBlock } from '../../../features/Slice/adminSlice'
 import { useNavigate } from 'react-router-dom';
 import { adminBookingsApi, issueRefundApi } from '../../../features/api/api';
 
@@ -48,11 +48,33 @@ const TableDesign = (prop) => {
   }
 
   const handleOk = (e) => {
-    const userData ={
-      email:confirmationEmail ,
-      adminEmail,
-    } 
-    dispatch(adminBlock(userData))
+    if(prop.selected==='CUSTOMERS'){
+      const userData ={
+        email:confirmationEmail ,
+        adminEmail,
+      } 
+      dispatch(adminBlock(userData)).then(res=>{
+        console.log(res)
+        if(res.payload.message === "jwt must be provided"){
+          window.location.reload();
+        }
+      })
+    }
+    if(prop.selected==='VENDORS'){
+      const userData ={
+        email:confirmationEmail ,
+        adminEmail,
+      } 
+      dispatch(adminVendorBlock(userData))
+    }
+    if(prop.selected==='SERVICES'){
+      const userData ={
+        email:confirmationEmail ,
+        adminEmail,
+      } 
+      dispatch(adminBlock(userData))
+    }
+    
     setIsModalOpen(false);
   };
 

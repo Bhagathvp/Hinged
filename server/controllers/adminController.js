@@ -134,6 +134,59 @@ const login = asyncHandler(async (req, res) => {
     
   })
 
+  //block vendor
+  const vendorBlock = asyncHandler(async (req,res)=>{
+
+    const {email,adminEmail} = req.body;
+    console.log(email)
+    const vendor = await Vendor.findOne({email});
+    if(vendor){
+    if (vendor.is_verified==1) {
+      await Vendor.findOneAndUpdate({email},{$set:{is_verified : 0}})
+    }else{
+      await Vendor.findOneAndUpdate({email},{$set:{is_verified : 1}});
+    }
+  }
+
+    const userList= await User.find({is_user: 1});
+    let users=[];
+
+    for(let i=0 ; i<userList.length ; i++ ){
+        users.push(userList[i]);
+    }
+
+    const vendorList = await Vendor.find({is_vendor: 1});
+    let vendors=[];
+
+    for(let i=0 ; i<vendorList.length ; i++ ){
+      vendors.push(vendorList[i]);
+    }
+
+    const serviceList = await Services.find()
+    let services =[];
+
+    for(let i=0 ; i<serviceList.length ; i++ ){
+      services.push(serviceList[i]);
+    }
+
+    const admin = await Admin.findOne({email:adminEmail})
+   
+    if(admin.is_admin===1){
+        res.json( {
+            _id: admin.id,
+            email: admin.email,
+            users,
+            vendors, 
+            services,
+            token: generateToken(admin._id),
+          } )
+    }else{
+      res.status(400).json({message:'invalid admin login'})
+      throw new Error('Invalid admin login')
+  }
+    
+  })
+
   //add services
   const addService = asyncHandler(async(req,res)=>{
 
@@ -250,6 +303,7 @@ const login = asyncHandler(async (req, res) => {
   module.exports={
     login,
     block,
+    vendorBlock,
     addService,
     adminBookings,
     issueRefund
